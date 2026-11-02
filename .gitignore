@@ -1,0 +1,26 @@
+# ASP.NET Core / .NET
+bin/
+obj/
+*.user
+*.suo
+appsettings.Development.json
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+android/.gradle/
+android/app/build/
+android/local.properties
+ios/.symlinks/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+
+# Editores y SO
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
