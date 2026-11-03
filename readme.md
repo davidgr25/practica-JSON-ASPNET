@@ -4,7 +4,7 @@ Aplicación cliente-servidor para la consulta y registro de productos en tiempo 
 
 ---
 
-## Integrantes del Equipo (4 Integrantes)
+## Integrantes del Equipo
 * **Integrante 1:** David de Jesús González Ramírez
 * **Integrante 2:** Edgar Fabian Perez Zepeda
 * **Integrante 3:** Julio Cesar Inda Jimenez
