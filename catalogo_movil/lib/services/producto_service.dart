@@ -3,9 +3,6 @@ import 'package:http/http.dart' as http;
 import '../models/producto.dart';
 
 class ProductoService {
-  // Ajusta el puerto según el que muestre tu terminal al correr ASP.NET Core
-  // Si usas emulador Android estándar: 10.0.2.2
-  // Si usas navegador Chrome (Flutter Web) o emulador iOS: localhost
   static const String baseUrl = 'http://localhost:5030/api/productos';
 
   // RF1: Obtener catálogo

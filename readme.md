@@ -4,64 +4,29 @@ Aplicación cliente-servidor para la consulta y registro de productos en tiempo 
 
 ---
 
-## 👥 Integrantes del Equipo (4 Integrantes)
+## Integrantes del Equipo (4 Integrantes)
 * **Integrante 1:** David de Jesús González Ramírez
-* **Integrante 2:** [Nombre y Apellidos]
-* **Integrante 3:** [Nombre y Apellidos]
-* **Integrante 4:** [Nombre y Apellidos]
+* **Integrante 2:** Edgar Fabian Perez Zepeda
+* **Integrante 3:** Julio Cesar Inda Jimenez
+* **Integrante 4:** Angel Gabriel Zuñiga Peralta
 
 * **Asignatura:** Desarrollo para Móviles 2  
 * **Institución:** UPEN Nayarit  
-* **Docente:** I.S.C. Luis Gerardo Aguirre Cervantes  
+* **Docente:** Luis Gerardo Aguirre Cervantes  
 
 ---
 
-## 🛠️ Tecnologías y Requisitos Previos
+## Tecnologías y Requisitos Previos
 
 * **Backend:** .NET SDK 8.0 o superior (ASP.NET Core Web API).
 * **Frontend:** Flutter SDK 3.x o superior & Dart.
 * **Dependencias Flutter:** Paquete `http` (`^1.2.0` o superior).
 * **Entornos de prueba compatibles:**
-  * Emulador oficial de Android (Android Studio).
-  * Dispositivo físico Android conectado a la misma red Wi-Fi o mediante depuración USB.
   * Navegador web (Google Chrome) para pruebas rápidas de interfaz.
 
 ---
 
-## 📁 Estructura del Repositorio
-
-```text
-catalogo-productos/
-├── ApiProductos/                  # Servidor Backend (ASP.NET Core)
-│   ├── Controllers/
-│   │   └── ProductosController.cs  # Endpoints GET y POST con validaciones
-│   ├── Models/
-│   │   └── Producto.cs             # Modelos de entidad y DTO de entrada
-│   ├── Program.cs                  # Configuración de servicios y CORS
-│   └── ApiProductos.csproj
-│
-├── catalogo_movil/                # Cliente Móvil (Flutter)
-│   ├── lib/
-│   │   ├── models/
-│   │   │   └── producto.dart       # Modelo Dart con fromJson y toJson
-│   │   ├── services/
-│   │   │   └── producto_service.dart # Consumo HTTP y manejo de errores
-│   │   └── main.dart               # Interfaz gráfica (Catálogo y Formulario)
-│   ├── pubspec.yaml
-│   └── android/app/src/main/AndroidManifest.xml
-│
-├── capturas/                      # Evidencias visuales de la práctica
-│   ├── 01_get_catalogo.png
-│   ├── 02_formulario_registro.png
-│   ├── 03_post_exitoso.png
-│   └── 04_post_invalido_400.png
-│
-└── README.md                      # Documentación integral del proyecto
-```
-
----
-
-## 🚀 Instrucciones Paso a Paso para la Ejecución
+## Instrucciones Paso a Paso para la Ejecución
 
 ### 1. Puesta en Marcha del Servidor (ASP.NET Core)
 
@@ -87,17 +52,6 @@ Antes de lanzar la app móvil, abre el archivo `catalogo_movil/lib/services/prod
 static const String baseUrl = 'http://DIRECCION_IP:5000/api/productos';
 ```
 
-* **Si usas el Emulador Oficial de Android:**
-  Utiliza la IP de puente loopback del emulador:
-  ```dart
-  static const String baseUrl = 'http://10.0.2.2:5000/api/productos';
-  ```
-* **Si usas un Dispositivo Físico (Celular por Wi-Fi):**
-  Averigua la dirección IPv4 de tu computadora con `ipconfig` en Windows (ejemplo: `192.168.1.75`) y configúrala así:
-  ```dart
-  static const String baseUrl = 'http://192.168.1.75:5000/api/productos';
-  ```
-  *(Nota: La PC y el celular deben estar conectados exactamente a la misma red Wi-Fi).*
 * **Si ejecutas la app en Chrome (Web):**
   ```dart
   static const String baseUrl = 'http://localhost:5000/api/productos';
@@ -123,7 +77,7 @@ static const String baseUrl = 'http://DIRECCION_IP:5000/api/productos';
 
 ---
 
-## 📋 Contrato de la API y Endpoints
+## Contrato de la API y Endpoints
 
 ### 1. `GET /api/productos` (RF1)
 * **Propósito:** Devuelve la lista completa de productos disponibles en el catálogo.
@@ -153,7 +107,7 @@ static const String baseUrl = 'http://DIRECCION_IP:5000/api/productos';
 * **Cuerpo enviado (Request):**
   ```json
   {
-    "nombre": "Mouse Inalámbrico",
+    "nombre": "Mouse",
     "precio": 299.50
   }
   ```
@@ -168,7 +122,7 @@ static const String baseUrl = 'http://DIRECCION_IP:5000/api/productos';
 
 ---
 
-## 📖 Explicación Técnica: Serialización, Deserialización y Manejo de Errores
+## Serialización, Deserialización y Manejo de Errores
 
 ### 1. Flujo de Serialización y Deserialización
 El intercambio de información requiere transformar estructuras de datos entre representaciones en memoria y cadenas de texto plano en formato JSON:
@@ -188,18 +142,38 @@ El intercambio de información requiere transformar estructuras de datos entre r
 
 ---
 
-## 📸 Evidencias de Funcionamiento
+## Preguntas de Comprobación
 
-Las capturas de pantalla que respaldan la rúbrica se ubican en la carpeta `/capturas`:
-
-1. **`01_get_catalogo.png`:** Consulta GET exitosa con código `200 OK` y catálogo de productos renderizado en la interfaz móvil.
-2. **`02_formulario_registro.png`:** Formulario interactivo abierto para capturar nombre y precio de un nuevo elemento.
-3. **`03_post_exitoso.png`:** Solicitud POST completada con código `201 Created` y producto añadido inmediatamente a la lista con su respectivo ID asignado.
-4. **`04_post_invalido_400.png`:** Solicitud con datos inválidos (precio menor o igual a cero o nombre vacío) mostrando la respuesta `400 Bad Request` y la alerta visual en Flutter.
+### 1. ¿Cuál es la diferencia entre serializar y deserializar JSON?
+* **Serializar:** Es el proceso de convertir una estructura de datos u objeto en memoria (como una clase en C# o una instancia en Dart) a una cadena de texto en formato JSON para poder transmitirla a través de la red o almacenarla . En el proyecto se realiza al enviar datos con `jsonEncode` en Flutter .
+* **Deserializar:** Es el proceso inverso; toma una cadena de texto en formato JSON recibida del servidor y la transforma nuevamente en un objeto tipado en memoria (usando `jsonDecode` y el constructor `Producto.fromJson`) para que la aplicación pueda manipular sus propiedades con seguridad de tipos.
 
 ---
 
-## 🤖 Declaración de Uso de Inteligencia Artificial
+### 2. ¿Qué ocurriría si el servidor cambia el nombre de una propiedad del contrato?
+El cliente en Flutter sufriría un fallo al deserializar los datos . Al buscar una clave que ya no existe en el mapa JSON (por ejemplo, si el servidor envía `"title"` en lugar de `"nombre"`), el valor recibido será `null` . Como en el modelo `Producto` los campos están declarados como obligatorios y no nulos (`required this.nombre`), la aplicación lanzará una excepción en tiempo de ejecución (como un error de casteo o fallo de aserción), impidiendo mostrar el catálogo en pantalla a menos que se actualice el modelo del cliente .
+
+---
+
+### 3. ¿Por qué el servidor debe generar el identificador del producto?
+El servidor debe generar el identificador para garantizar la integridad, unicidad y consistencia de los datos . Si el cliente generara el `id`, dos usuarios podrían registrar productos al mismo tiempo con el mismo identificador (colisión de claves), o un cliente malintencionado podría sobreescribir registros existentes enviando identificadores arbitrarios+. El backend actúa como la única fuente de verdad.
+
+---
+
+### 4. ¿Qué diferencia hay entre los códigos HTTP 400 y 500?
+* **400 Bad Request:** Indica un error atribuible al **cliente**. Ocurre cuando la petición enviada tiene una sintaxis incorrecta o no cumple con las reglas de negocio (por ejemplo, enviar un nombre vacío o un precio menor o igual a cero).
+* **500 Internal Server Error:** Indica un fallo interno en el **servidor**. Ocurre cuando el backend experimenta una excepción no controlada, una falla técnica en su infraestructura o un error imprevisto en el código, independientemente de que los datos enviados por el cliente hayan sido válidos.
+
+---
+
+### 5. ¿Por qué conviene separar las peticiones HTTP de los widgets de interfaz?
+Separar la lógica de red (en `ProductoService`) de los widgets de pantalla (en `CatalogoPage`) cumple con el principio de **separación de responsabilidades** y aporta los siguientes beneficios:
+* **Mantenibilidad:** Si cambia la URL base, los encabezados o la librería de red, únicamente se modifica el archivo de servicio sin alterar el diseño visual.
+* **Reutilización:** Múltiples pantallas o componentes pueden consultar o registrar productos utilizando el mismo método del servicio sin duplicar código.
+* **Legibilidad y pruebas:** Los widgets se enfocan únicamente en renderizar la interfaz y reaccionar al estado, lo que facilita depurar errores visuales y realizar pruebas unitarias sobre las peticiones HTTP.
+
+
+## Declaración de Uso de Inteligencia Artificial
 
 * **Herramienta utilizada:** Gemini (Google).
 * **Finalidad y alcance:**
